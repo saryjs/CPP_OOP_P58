@@ -18,5 +18,8 @@
     <ClCompile Include="CPP_OOP_P58.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="intro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
