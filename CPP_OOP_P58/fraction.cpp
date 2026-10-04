@@ -32,7 +32,7 @@ fraction_t::fraction_t(fraction_t& other) {
 		std::cout << "Copy constructor: copy from " 
 			<< (void*)other.name 
 			<< " to " 
-			<< (void*)this->name 
+			<< (void*)(this->name)
 			<< std::endl;
 	}
 	else {
@@ -66,4 +66,10 @@ std::string fraction_t::to_string() {
 	return std::format("({}/{})", numerator, denominator);
 	//                                ^           ^
 	// data to place instead of placeholders
+}
+
+fraction_t::~fraction_t() {
+	if (name != NULL) {
+		delete[] name;
+	}
 }
