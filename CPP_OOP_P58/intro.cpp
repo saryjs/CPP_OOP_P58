@@ -1,3 +1,25 @@
+#include "intro.h"
+#include "fraction.h"
+#include <iostream>
+
+void intro() {
+	std::cout << "Intro to OOP" << std::endl;
+	// створення об'єктів
+	fraction_t frac1;
+	fraction_t* frac2 = new fraction_t;
+	std::cout
+		<< frac1.to_string() << std::endl
+		<< frac2->to_string() << std::endl;
+
+	fraction_t frac3(10);
+	fraction_t* frac4 = new fraction_t(1, 10);
+	std::cout
+		<< frac3.to_string() << std::endl
+		<< frac4->to_string() << std::endl;
+
+	delete frac2;
+}
+
 /*
 ООП. Вступ.
 Парадигма - термін, що поєднує традиції, прийоми, методики тощо.

@@ -11,4 +11,8 @@ public:
 	void set_numerator(int);
 	void set_denominator(int);
 	std::string to_string();
+
+	fraction_t();  // constructor
+	fraction_t(int);
+	fraction_t(int, int);
 };

@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CPP_OOP_P58/CPP_OOP_P58.vcxproj" />
+  <Project Path="CPP_OOP_P58/CPP_OOP_P58.vcxproj" Id="6a45f0b7-4b31-4c03-8347-8eebb3e63cfb" />
 </Solution>
