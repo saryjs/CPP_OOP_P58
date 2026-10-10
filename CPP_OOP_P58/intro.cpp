@@ -1,6 +1,6 @@
 #include "intro.h"
 #include "fraction.h"
-//#include "vector.h"
+#include "vector.h"
 #include <iostream>
 
 void intro() {
@@ -26,16 +26,20 @@ void intro() {
 		<< frac5.to_string() << std::endl
 		<< frac6->to_string() << std::endl;
 
+	fraction_t d = std::move( fraction_t::decil() );
+	std::cout
+		<< d.to_string() << std::endl;
+
 	delete frac2;
 	delete frac4;
 	delete frac6;
 
-	//vector2_t vect1;
-	//vector2_t* vect2 = new vector2_t(5, 0.5);
-	//std::cout
-	//	<< vect1.to_string()
-	//	<< vect2->to_string();
-	//delete vect2;
+	vector2_t vect1;
+	vector2_t* vect2 = new vector2_t(5, 0.5);
+	std::cout
+		<< vect1.to_string()
+		<< vect2->to_string();
+	delete vect2;
 }
 
 /*

@@ -80,6 +80,7 @@ fraction_t::fraction_t(fraction_t&& other) noexcept {
 	this->denominator = other.denominator;
 	this->name = other.name;
 	other.name = NULL;
+	std::cout << "Move constructor: take from " << (void*)other.name << std::endl;
 }
 
 char* fraction_t::get_name() {
