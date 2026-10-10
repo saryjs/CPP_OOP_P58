@@ -30,6 +30,9 @@ void intro() {
 	std::cout
 		<< d.to_string() << std::endl;
 
+	std::cout << frac5.to_string() << " + " << d.to_string()
+		<< " = " << (frac5 + d).to_string() << std::endl;
+
 	delete frac2;
 	delete frac4;
 	delete frac6;

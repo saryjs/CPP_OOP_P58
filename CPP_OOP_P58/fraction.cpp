@@ -80,8 +80,10 @@ fraction_t::fraction_t(fraction_t&& other) noexcept {
 	this->denominator = other.denominator;
 	this->name = other.name;
 	other.name = NULL;
-	std::cout << "Move constructor: take from " << (void*)other.name << std::endl;
+	std::cout << "Move constructor: take from " << (void*)this->name << std::endl;
 }
+
+
 
 char* fraction_t::get_name() {
 	return name;
@@ -112,7 +114,7 @@ void fraction_t::set_denominator(int denominator) {
 std::string fraction_t::to_string() {
 	// форматування рядків - заповнення "формату" - рядка з плейсхолдерами
 	//                    v   v - placeholders
-	return std::format("({0}/{1})", numerator, denominator);
+	return std::format("({0}/{1}{2})", numerator, denominator, (name==NULL ? "" : name));
 	//                                  ^           ^
 	//               дані, які будуть підставлені на міце плейсхолдерів
 }
@@ -124,17 +126,41 @@ fraction_t::~fraction_t() {
 	}
 }
 
-/*
-Д.З. Описати клас, що задає вектор на площині (vector_2 / vector2_t)
-склад: 2 поля-координати х та у (дробові)
-+ аксессори для них
-Розділити оголошення типу та реалізацію його методів на різні файли.
+fraction_t fraction_t::operator +(const fraction_t& other) {
+	char* new_name = NULL;
+	if (this->name != NULL && other.name != NULL) {
+		size_t len1 = strlen(this->name);
+		size_t len = len1 + strlen(other.name) + 2;
+		new_name = new char[len];
+		strcpy(new_name, this->name);
+		strcpy(new_name + len1, "+");
+		strcpy(new_name + len1 + 1, other.name);
+	}
+	return fraction_t(
+		this->numerator * other.denominator + this->denominator * other.numerator,
+		this->denominator * other.denominator);
+}
+fraction_t fraction_t::operator =(const fraction_t& other) {
+	this->numerator = other.numerator;
+	this->denominator = other.denominator;
+	if (other.name != NULL) {
+		size_t len = strlen(other.name) + 1;
+		this->name = new char[len];
+		strcpy(this->name, other.name);
+		std::cout << "Copy assignment: copy from " << (void*)other.name << " to "
+			<< (void*)(this->name) << std::endl;
+	}
+	else {
+		this->name = NULL;
+	}
+	return *this;
+}
 
-Д.З. Реалізувати для класу, що задає вектор на площині (попереднє ДЗ)
-додати поле для імені вектора (char*), аксесори для нього
-конструктори (без параметрів, з різними параметрами, конструктор копіювання)
-метод рядкового представлення (to_string), що включає ім'я (якщо воно є)
-деструктор
-Створити декілька об'єктів - векторів, у т.ч. за допомогою копіювання,
-вивести дані на екран. Додати скріншот і посилання  на репозиторій.
-*/
+fraction_t fraction_t::operator =(fraction_t&& other) noexcept{
+	this->numerator = other.numerator;
+	this->denominator = other.denominator;
+	this->name = other.name;
+	other.name = NULL;
+	std::cout << "Move assignment: take from " << (void*)this->name << std::endl;
+	return *this;
+}
