@@ -1,29 +1,26 @@
 #pragma once
 #include <string>
 
-class fraction_t {
-private:
-	int numerator;
-	int denominator;
+class fraction_t {             // клас - це тип даних, тому є традиції додавати "_t"
+private:                       // склад класу поділяється за "видимістю" на декілька категорій
+	int numerator;             // поле - "змінна" в середині класу
+	int denominator;           // набір полів називають "характеристиками" класу
 	char* name;
-public:
-	int get_numerator();
-	int get_denominator();
-	void set_numerator(int);
+public:                        // За рекомендаціями ООП поля мають бути приватними, 
+	int get_numerator();       // а для доступу до них створюють методи ("функції"), що називають
+	int get_denominator();     // аксесорами (які поділяють на геттери та сеттери)
+	void set_numerator(int);   // набір методів класу також називають "поведінкою"
 	void set_denominator(int);
-
 	char* get_name();
 	void set_name(char*);
-
 	std::string to_string();
 
-	fraction_t();  // constructor
-	fraction_t(int);
-	fraction_t(int, int);
-	fraction_t(int, int, char*);
+	fraction_t();                // конструктори - спец. методи, які автоматично запускаються
+	fraction_t(int);             // коли створюються об'єкти даного класу. Вони не мають 
+	fraction_t(int, int);        // типу повернення і збігаються за назвою з іменем класу
+	fraction_t(int, int, char*); // Конструкторів може бути декілька за правилами перевантаження
+	fraction_t(fraction_t&);     // Окремий тип конструкторів: конструктор копіювання
+	fraction_t(fraction_t&&) noexcept;  // конструктор переносу (move constructor)
 
-	fraction_t(fraction_t&);
-	//fraction_t(fraction_t&&);
-	//
-	~fraction_t(); // destructor
+	~fraction_t();               // деструктор - викликається при знищенні об'єкта
 };
