@@ -25,5 +25,5 @@ public:
 	fraction_t(fraction_t&);
 	//fraction_t(fraction_t&&);
 	//
-	//~fraction_t(); // destructor
+	~fraction_t(); // destructor
 };

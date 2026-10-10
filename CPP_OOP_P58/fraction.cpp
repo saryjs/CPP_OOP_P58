@@ -68,8 +68,8 @@ std::string fraction_t::to_string() {
 	// data to place instead of placeholders
 }
 
-fraction_t::~fraction_t() {
-	if (name != NULL) {
-		delete[] name;
-	}
-}
+//fraction_t::~fraction_t() {
+//	if (name != NULL) {
+//		delete[] name;
+//	}
+//}
