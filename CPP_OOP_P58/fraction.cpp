@@ -138,8 +138,23 @@ fraction_t fraction_t::operator +(const fraction_t& other) {
 	}
 	return fraction_t(
 		this->numerator * other.denominator + this->denominator * other.numerator,
-		this->denominator * other.denominator);
+		this->denominator * other.denominator, new_name);
 }
+fraction_t fraction_t::operator -(const fraction_t& other) {
+	char* new_name = NULL;
+	if (this->name != NULL && other.name != NULL) {
+		size_t len1 = strlen(this->name);
+		size_t len = len1 + strlen(other.name) + 2;
+		new_name = new char[len];
+		strcpy(new_name, this->name);
+		strcpy(new_name + len1, "-");
+		strcpy(new_name + len1 + 1, other.name);
+	}
+	return fraction_t(
+		this->numerator * other.denominator - this->denominator * other.numerator,
+		this->denominator * other.denominator, new_name);
+}
+
 fraction_t fraction_t::operator =(const fraction_t& other) {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
