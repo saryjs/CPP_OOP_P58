@@ -111,7 +111,7 @@ void fraction_t::set_denominator(int denominator) {
 	this->denominator = denominator;
 }
 
-std::string fraction_t::to_string() {
+std::string fraction_t::to_string() const {
 	// форматування рядків - заповнення "формату" - рядка з плейсхолдерами
 	//                    v   v - placeholders
 	return std::format("({0}/{1}{2})", numerator, denominator, (name==NULL ? "" : name));
@@ -193,6 +193,42 @@ fraction_t& fraction_t::operator =(fraction_t&& other) noexcept{
 	return *this;
 }
 
+std::ostream& operator <<(std::ostream& out, const fraction_t& f) {
+	out << f.to_string();
+	return out;
+}
+
+fraction_t operator -(const fraction_t& f) {
+	return fraction_t(
+		-f.get_numerator(),
+		f.get_denominator()
+	);
+}
+
+void fraction_t::operator +=(const fraction_t& other) {
+	this->numerator = this->numerator * other.denominator + this->denominator * other.numerator;
+	this->denominator = this->denominator * other.denominator;
+	reduce();
+}
+void fraction_t::operator +=(int n) {
+	this->numerator += n * this->denominator;
+	reduce();
+}
+
+int fraction_t::gcd(int a, int b) {
+	if (a < 0) return a = -a;
+	if (b < 0) return b = -b;
+	if (b > a) return gcd(b, a);
+	if (b == 0) return a;
+	return gcd(b, a % b);
+}
+void fraction_t::reduce() {
+	int g = gcd(numerator, denominator);
+	if (g != 1) {
+		numerator /= g;
+		denominator /= g;
+	}
+}
 /*
 Правило опису класів (The Rule Of Six):
 При описі класів необхідно обов'язково включити до опису
