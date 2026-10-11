@@ -36,6 +36,19 @@ void intro() {
 	std::cout << frac5.to_string() << " - " << d.to_string()
 		<< " = " << (frac5 - d).to_string() << std::endl;
 
+	std::cout << "-----------------------------" << std::endl;
+	fraction_t f; // default constructor
+	std::cout << f.to_string() << std::endl;
+	f = d; // copy assigment (operator =)
+	std::cout << f.to_string() << std::endl;
+	f = f + frac5;
+	std::cout << f.to_string() << std::endl;
+
+	std::cout << "-----------------------------" << std::endl;
+	f = f + frac5; // move assignment (operator =(&)): (1/10Decil)
+	std::cout << d.to_string() << std::endl;
+
+
 	delete frac2;
 	delete frac4;
 	delete frac6;
@@ -45,7 +58,18 @@ void intro() {
 	std::cout
 		<< vect1.to_string()
 		<< vect2->to_string();
+
+	vector2_t vect3(5, 10, new char[] {"Vector"});
+	vector2_t* vect4 = new vector2_t(vect3);
+	vector2_t* vect5 = new vector2_t(*vect4);
+	std::cout << std::endl
+		<< "Original vector: " << vect3.to_string() << std::endl
+		<< "Copied vector: " << vect4->to_string() << std::endl
+		<< "Copied copied vector: " << vect5->to_string() << std::endl;
+
 	delete vect2;
+	delete vect4;
+	delete vect5;
 }
 
 /*
