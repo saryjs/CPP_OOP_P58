@@ -7,11 +7,11 @@ private:                       // склад класу поділяється �
 	int denominator;           // набір полів називають "характеристиками" класу
 	char* name;
 public:                        // За рекомендаціями ООП поля мають бути приватними, 
-	int get_numerator();       // а для доступу до них створюють методи ("функції"), що називають
-	int get_denominator();     // аксесорами (які поділяють на геттери та сеттери)
+	int get_numerator() const;       // а для доступу до них створюють методи ("функції"), що називають
+	int get_denominator() const;     // аксесорами (які поділяють на геттери та сеттери)
 	void set_numerator(int);   // набір методів класу також називають "поведінкою"
 	void set_denominator(int);
-	char* get_name();
+	char* get_name() const;
 	void set_name(char*);
 	std::string to_string();
 
@@ -41,4 +41,11 @@ public:                        // За рекомендаціями ООП по�
 	fraction_t& operator =(const fraction_t& other); // copy
 	fraction_t& operator =(fraction_t&& other) noexcept; // move
 
+	// "friend" methods - outside functions, which have access to private fields
+	friend fraction_t operator *(const fraction_t& f1, const fraction_t& f2);
+	friend fraction_t operator /(const fraction_t& f1, const fraction_t& f2);
 };
+
+// operations can be outside of classes
+fraction_t operator *(const fraction_t& f1, const fraction_t& f2);
+fraction_t operator /(const fraction_t& f1, const fraction_t& f2);

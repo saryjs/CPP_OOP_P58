@@ -45,8 +45,11 @@ void intro() {
 	std::cout << f.to_string() << std::endl;
 
 	std::cout << "-----------------------------" << std::endl;
-	f = f + frac5; // move assignment (operator =(&)): (1/10Decil)
-	std::cout << d.to_string() << std::endl;
+	f = f * frac5;
+	std::cout << f.to_string() << std::endl;
+	std::cout << "-----------------------------" << std::endl;
+	f = f / frac5;
+	std::cout << f.to_string() << std::endl;
 
 
 	delete frac2;
