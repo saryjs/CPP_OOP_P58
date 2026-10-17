@@ -10,8 +10,8 @@ private:
 	std::string name;
 	double price;
 public:
-	std::string getName();
+	std::string getName() const;
 	void	    setName(std::string);
-	double	    getPrice();
+	double	    getPrice() const;
 	void	    setPrice(double);
 };

@@ -143,6 +143,9 @@
     <ClCompile Include="CPP_OOP_P58.cpp" />
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
+    <ClCompile Include="Product.cpp" />
+    <ClCompile Include="shop\Electrical.cpp" />
+    <ClCompile Include="shop\Laptop.cpp" />
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +153,8 @@
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="shop\Electrical.h" />
+    <ClInclude Include="shop\Laptop.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
