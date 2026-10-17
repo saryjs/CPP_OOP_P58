@@ -149,6 +149,7 @@
     <ClInclude Include="basics.h" />
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
+    <ClInclude Include="Product.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
