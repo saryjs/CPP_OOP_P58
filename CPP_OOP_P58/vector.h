@@ -34,7 +34,9 @@ public:
 
 	void operator +=(const vector2_t& other);
 	void operator +=(int n);
-
+	void operator -=(const vector2_t& other);
+	void operator -=(int n);
+	
 	friend vector2_t operator *(const vector2_t& f1, const vector2_t& f2);
 	friend vector2_t operator /(const vector2_t& f1, const vector2_t& f2);
 

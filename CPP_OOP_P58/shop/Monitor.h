@@ -2,10 +2,10 @@
 #include "Electrical.h"
 
 class Monitor : public Electrical {
-private: 
-	double diagonal;
+private:
+	double      diagonal;
 public:
-	double		getDiagonal() const;
-	void		setDiagonal(double);
+	double      getDiagonal() const;
+	Monitor*	setDiagonal(double);
 	std::string toString() const override;
 };

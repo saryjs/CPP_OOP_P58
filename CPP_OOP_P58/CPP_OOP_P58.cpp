@@ -6,7 +6,7 @@
 int main()
 {
     intro();
-    //basics();
+    basics();
 
     return 0;
 }

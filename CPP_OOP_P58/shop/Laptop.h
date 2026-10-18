@@ -6,6 +6,6 @@ private:
 	std::string hardware;
 public:
 	std::string getHardware() const;
-	Laptop*	    setHardware(std::string);
-	std::string toString() const override;
+	Laptop* setHardware(std::string);
+	std::string toString() const override;  // override - переозначення батьківського методу
 };

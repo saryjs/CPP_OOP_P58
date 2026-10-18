@@ -97,16 +97,18 @@ vector2_t vector2_t::operator -(const vector2_t& other) const {
 }
 
 vector2_t operator *(const vector2_t& f1, const vector2_t& f2) {
-	char* ret_name = f1.name + "+" + f2.name;
+	char* ret_name = f1.name;
 	return vector2_t(
 		f1.x * f2.x,
 		f1.y * f2.y,
 		ret_name);
 }
 vector2_t operator /(const vector2_t& f1, const vector2_t& f2) {
+	char* ret_name = f1.name;
 	return vector2_t(
 		f1.x / f2.x,
-		f1.y / f2.y
+		f1.y / f2.y,
+		ret_name
 	);
 }
 
@@ -137,7 +139,7 @@ vector2_t& vector2_t::operator =(vector2_t&& other) noexcept {
 }
 
 std::ostream& operator <<(std::ostream& out, const vector2_t& f) {
-	out << f.x << " ; " << f.y << "(" << f.name << ")";
+	out << f.x << " ; " << f.y;// << "(" << f.name << ")";
 	return out;
 }
 
@@ -153,5 +155,14 @@ void vector2_t::operator +=(const vector2_t& other) {
 	this->y = this->y + other.y;
 }
 void vector2_t::operator +=(int n) {
-	this->x += n * this->y;
+	this->x = n + this->x;
+	this->y = n + this->y;
+}
+void vector2_t::operator -=(const vector2_t& other) {
+	this->x = this->x - other.x;
+	this->y = this->y - other.y;
+}
+void vector2_t::operator -=(int n) {
+	this->x = this->x - n;
+	this->y = this->y - n;
 }
