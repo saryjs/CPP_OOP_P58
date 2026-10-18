@@ -5,6 +5,8 @@ class Electrical : public Product {
 private:
 	double power;
 public:
-	double getPower() const;
-	void   setPower(double);
+	double		  getPower() const;
+	Electrical*   setPower(double);
+
+	virtual std::string	toString() const = 0;
 };

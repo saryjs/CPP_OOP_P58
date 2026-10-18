@@ -4,10 +4,11 @@
 std::string Laptop::getHardware() const {
 	return hardware;
 }
-void Laptop::setHardware(std::string hardware) {
+Laptop* Laptop::setHardware(std::string hardware) {
 	this->hardware = hardware;
+	return this;
 }
-std::string Laptop::toString() {
+std::string Laptop::toString() const {
 	return std::format("{} {} UAH, {} ({} W)",
 		getName(),
 		getPrice(),

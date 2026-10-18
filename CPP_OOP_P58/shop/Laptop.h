@@ -6,6 +6,6 @@ private:
 	std::string hardware;
 public:
 	std::string getHardware() const;
-	void	    setHardware(std::string);
-	std::string toString();
+	Laptop*	    setHardware(std::string);
+	std::string toString() const override;
 };

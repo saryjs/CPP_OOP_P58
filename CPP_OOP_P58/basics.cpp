@@ -1,15 +1,27 @@
 #include <iostream>
 #include "basics.h"
-#include "shop/Laptop.h"
 
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
-	Laptop* acer = new Laptop();
-	acer->setName("Acer Nitro");
-	acer->setPrice(60499);
-	acer->setPower(90);
-	acer->setHardware("Intel Core 5, RAM 16GB, SSD 512GB");
-	std::cout << acer->toString() << std::endl;
+	Electrical* stock[2];
+
+#pragma region Objects
+	stock[0] = (new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90);
+	stock[0]->setName("Acer Nitro");
+	stock[0]->setPrice(60499);
+	std::cout << stock[0]->toString() << std::endl;
+
+	Monitor* dell = new Monitor();
+	dell->setName("Dell Vision");
+	dell->setDiagonal(32);
+	dell->setPower(120);
+	dell->setPrice(1200);
+	std::cout << dell->toString() << std::endl;
+#pragma endregion
+
+	stock[1] = dell;
 }
 
 /*

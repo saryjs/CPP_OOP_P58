@@ -5,8 +5,8 @@
 
 int main()
 {
-    //intro();
-    basics();
+    intro();
+    //basics();
 
     return 0;
 }
