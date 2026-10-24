@@ -25,6 +25,26 @@ void basics() {
 	for (auto product : stock) {
 		std::cout << product->toString() << std::endl;
 	}
+
+	Site* available[2];
+
+	available[0] = (new Flat())
+		->setName("Flat1")
+		->setRoom(123)
+		->setSquare(456)
+		->setPrice(789)
+		->setLocation("City");
+
+	available[1] = (new Car())
+		->setName("Car1")
+		->setGas("Diesel")
+		->setGear("Manual")
+		->setPrice(123123)
+		->setYear(2026);
+
+	for (auto site : available) {
+		std::cout << site->toString() << std::endl;
+	}
 }
 
 /*

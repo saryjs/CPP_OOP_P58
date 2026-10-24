@@ -149,6 +149,7 @@
     <ClCompile Include="shop\Monitor.cpp" />
     <ClCompile Include="shop\Periphery.cpp" />
     <ClCompile Include="shop\Product.cpp" />
+    <ClCompile Include="site\Site.cpp" />
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="shop\Monitor.h" />
     <ClInclude Include="shop\Periphery.h" />
     <ClInclude Include="shop\Product.h" />
+    <ClInclude Include="site\Site.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
