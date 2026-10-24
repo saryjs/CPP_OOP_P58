@@ -5,7 +5,7 @@ double Car::getGas() const {
 	return gas_type;
 }
 
-Car* Car::setGas(double gas_type) {
+Car* Car::setGas(std::string gas_type) {
 	this->gas_type = gas_type;
 	return this;
 }
