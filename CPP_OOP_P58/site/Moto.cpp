@@ -1,11 +1,11 @@
 #include "Moto.h"
 #include <format>
 
-double Moto::getGas() const {
+std::string Moto::getGas() const {
 	return gas_type;
 }
 
-Moto* Moto::setGas(double gas_type) {
+Moto* Moto::setGas(std::string gas_type) {
 	this->gas_type = gas_type;
 	return this;
 }

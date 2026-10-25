@@ -8,39 +8,39 @@ void basics() {
 	// тип (базового класу), при цьому фактично є об'єктами
 	// похідних (дочірніх) типів
 
-	Product* stock[2];
+	//Product* stock[2];
 
-	stock[0] = (new Laptop())
-		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
-		->setPower(90)
-		->setName("Acer Nitro")
-		->setPrice(60499);
+	//stock[0] = (new Laptop())
+	//	->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+	//	->setPower(90)
+	//	->setName("Acer Nitro")
+	//	->setPrice(60499);
 
-	stock[1] = (new Monitor())
-		->setDiagonal(32)
-		->setPower(120)
-		->setName("Dell Vision")
-		->setPrice(7950);
+	//stock[1] = (new Monitor())
+	//	->setDiagonal(32)
+	//	->setPower(120)
+	//	->setName("Dell Vision")
+	//	->setPrice(7950);
 
-	for (auto product : stock) {
-		std::cout << product->toString() << std::endl;
-	}
+	//for (auto product : stock) {
+	//	std::cout << product->toString() << std::endl;
+	//}
 
 	Site* available[2];
 
 	available[0] = (new Flat())
-		->setName("Flat1")
 		->setRoom(123)
 		->setSquare(456)
+		->setLocation("City")
 		->setPrice(789)
-		->setLocation("City");
+		->setName("Flat1");
 
 	available[1] = (new Car())
-		->setName("Car1")
 		->setGas("Diesel")
 		->setGear("Manual")
+		->setYear(2026)
 		->setPrice(123123)
-		->setYear(2026);
+		->setName("Car1");
 
 	for (auto site : available) {
 		std::cout << site->toString() << std::endl;

@@ -1,11 +1,11 @@
 #include "House.h"
 #include <format>
 
-double House::getAddress() const {
+std::string House::getAddress() const {
 	return address;
 }
 
-House* House::setAddress(double address) {
+House* House::setAddress(std::string address) {
 	this->address = address;
 	return this;
 }

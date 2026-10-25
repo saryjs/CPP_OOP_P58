@@ -1,7 +1,7 @@
 #include "Car.h"
 #include <format>
 
-double Car::getGas() const {
+std::string Car::getGas() const {
 	return gas_type;
 }
 

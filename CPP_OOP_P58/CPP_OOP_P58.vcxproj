@@ -149,12 +149,19 @@
     <ClCompile Include="shop\Monitor.cpp" />
     <ClCompile Include="shop\Periphery.cpp" />
     <ClCompile Include="shop\Product.cpp" />
+    <ClCompile Include="site\Auto.cpp" />
+    <ClCompile Include="site\Car.cpp" />
+    <ClCompile Include="site\Flat.cpp" />
+    <ClCompile Include="site\House.cpp" />
+    <ClCompile Include="site\Housing.cpp" />
+    <ClCompile Include="site\Moto.cpp" />
     <ClCompile Include="site\Site.cpp" />
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basics.h" />
     <ClInclude Include="data_structures.h" />
+    <ClInclude Include="data_structures\linked_list.h" />
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
     <ClInclude Include="shop\Electrical.h" />
@@ -162,6 +169,12 @@
     <ClInclude Include="shop\Monitor.h" />
     <ClInclude Include="shop\Periphery.h" />
     <ClInclude Include="shop\Product.h" />
+    <ClInclude Include="site\Auto.h" />
+    <ClInclude Include="site\Car.h" />
+    <ClInclude Include="site\Flat.h" />
+    <ClInclude Include="site\House.h" />
+    <ClInclude Include="site\Housing.h" />
+    <ClInclude Include="site\Moto.h" />
     <ClInclude Include="site\Site.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>

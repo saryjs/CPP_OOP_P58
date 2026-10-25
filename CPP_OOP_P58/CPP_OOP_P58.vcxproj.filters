@@ -48,6 +48,24 @@
     <ClCompile Include="data_structures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="site\Auto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="site\Car.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="site\Flat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="site\House.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="site\Housing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="site\Moto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="site\Site.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,7 +101,28 @@
     <ClInclude Include="data_structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="site\Auto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="site\Car.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="site\Flat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="site\House.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="site\Housing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="site\Moto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="site\Site.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

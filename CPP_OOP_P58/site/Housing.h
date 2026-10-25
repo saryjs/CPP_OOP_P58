@@ -4,7 +4,7 @@
 class Housing : public Site {
 private:
 	double      square;
-	std::string loctaion;
+	std::string location;
 public:
 	double      getSquare() const;
 	Housing*	setSquare(double);
