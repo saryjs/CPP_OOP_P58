@@ -8,7 +8,7 @@ int main()
 {
     //intro();
     //basics();
-    //data_structures();
+    data_structures();
 
     return 0;
 }

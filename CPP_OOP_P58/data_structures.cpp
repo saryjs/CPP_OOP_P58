@@ -1,4 +1,5 @@
 #include "data_structures.h"
+#include "data_structures/linked_list.h"
 #include <iostream>
 
 template <typename T>               //  Шаблонними можуть бути функціхх та типи (класи, структури)       
@@ -24,7 +25,18 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
-	std::cout << "Data structures" << std::endl;
+    std::cout << "Data structures" << std::endl;
+    LinkedList<int>* intList = new LinkedList<int>();
+    intList->add(10);
+    intList->add(20);
+    intList->add(30);
+    intList->add(40);
+    intList->insertBefore(25, 2);
+    intList->print();
+}
+
+void data_structures_t() {
+	std::cout << "Templates" << std::endl;
     print(1);           // ... і для кожного конкретного вжитку
     print(2);           // створює копію шаблона під даний "Т"
     print("one two");   // Тобто у підсумку буде кілька (4) різні
