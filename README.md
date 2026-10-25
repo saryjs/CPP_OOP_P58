@@ -3,3 +3,6 @@
 
 # Screenshot 2
 <img width="1178" height="519" alt="Screenshot 2026-10-18 121208" src="https://github.com/user-attachments/assets/79b78204-d459-4c9f-ac0f-e0b4aa15bc0e" />
+
+# Basics
+<img width="673" height="402" alt="Screenshot 2026-10-25 093043" src="https://github.com/user-attachments/assets/dc01b9c4-c059-4b5e-9013-65cf720abeff" />
