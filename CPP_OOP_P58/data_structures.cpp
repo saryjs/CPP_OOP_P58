@@ -31,8 +31,24 @@ void data_structures() {
     intList->add(20);
     intList->add(30);
     intList->add(40);
+    intList->print();
+    intList->insertBefore(35, 3);
+    intList->print();
     intList->insertBefore(25, 2);
     intList->print();
+    intList->insertBefore(15, 1);
+    intList->print();
+    intList->insertBefore(5, 0);
+    intList->print();
+    std::cout << "-----------------------------------" << std::endl;
+    intList->remove(0);
+    intList->printId();
+    intList->remove(3);
+    intList->printId();
+    intList->remove(0);
+    intList->printId();
+    intList->remove(0);
+    intList->printId();
 }
 
 void data_structures_t() {
