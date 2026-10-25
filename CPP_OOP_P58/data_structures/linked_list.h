@@ -108,6 +108,9 @@ T LinkedList<T>::remove(size_t index) {
 template<typename T>
 void LinkedList<T>::print() {
 	ListNode<T>* node = first;
+	if (node == NULL) {
+		std::cout << "Empty list" << std::endl;
+	}
 	while (node) {
 		std::cout << node->data << " ";
 		node = node->next;
