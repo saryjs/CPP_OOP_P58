@@ -1,4 +1,5 @@
 #include "data_structures.h"
+#include "queue.h"
 #include "data_structures/linked_list.h"
 #include <iostream>
 
@@ -25,6 +26,17 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    std::cout << "Queue demo" << std::endl;
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+}
+
+void data_structures_2() {
     std::cout << "Data structures" << std::endl;
     LinkedList<int>* intList = new LinkedList<int>();
     intList->add(10);
