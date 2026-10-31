@@ -6,7 +6,7 @@
 
 int main()
 {
-    //intro();
+    intro();
     //basics();
     data_structures();
 

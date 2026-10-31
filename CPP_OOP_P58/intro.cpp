@@ -83,13 +83,12 @@ void intro() {
 	//delete frac4;
 	//delete frac6;
 
-	vector2_t vect1(6, 4, new char[] {"Vector 1"});
+	//vector2_t vect1(6, 4, new char[] {"Vector 1"});
 	//vector2_t* vect2 = new vector2_t(5, 0.5);
 	//std::cout
 	//	<< vect1.to_string()
 	//	<< vect2->to_string();
 
-	vector2_t vect3(5, 10, new char[] {"Vector 3"});
 	//vector2_t* vect4 = new vector2_t(vect3);
 	//vector2_t* vect5 = new vector2_t(*vect4);
 	//std::cout << std::endl
@@ -97,30 +96,12 @@ void intro() {
 	//	<< "Copied vector: " << vect4->to_string() << std::endl
 	//	<< "Copied copied vector: " << vect5->to_string() << std::endl;
 
-	vector2_t vec(0, 0, new char[] {"Name"});
-	std::cout << "VECTOR 1: " << vect1.to_string() << std::endl;
-	std::cout << "VECTOR 3: " << vect3.to_string() << std::endl;
-	std::cout << "VEC: " << vec.to_string() << std::endl;
-	std::cout << "----------Vector = -------------" << std::endl;
-	std::cout << vec << std::endl;
-	vec = vect1;
-	std::cout << vec << std::endl;
-	vec = vec + vect3;
-	std::cout << vec << std::endl;
-	std::cout << "----------Vector + - -----------" << std::endl;
-	vec = vect1 + vect3;
-	std::cout << vec << std::endl;
-	vec = vect1 - vect3;
-	std::cout << vec << std::endl;
-	std::cout << "----------Vector * -------------" << std::endl;
-	vec = vec * vect3;
-	std::cout << vec << std::endl;
-	std::cout << "----------Vector / -------------" << std::endl;
-	vec = vec / vect3;
-	std::cout << vec << std::endl;
-	std::cout << "----------Vector += ------------" << std::endl;
-	vec += vect3;
-	std::cout << vec << std::endl;
+	vector2_t<int> vec1(5, 3, new char[] {"Int1"});
+	std::cout << "VECTOR 1: " << vec1.to_string() << std::endl;
+	vector2_t<float> vec2(4, 7, new char[] {"Float1"});
+	std::cout << "VECTOR 2: " << vec2.to_string() << std::endl;
+	vector2_t<double> vec3(8, 12, new char[] {"Double1"});
+	std::cout << "VECTOR 3: " << vec3.to_string() << std::endl;
 
 	//delete vect2;
 	//delete vect4;

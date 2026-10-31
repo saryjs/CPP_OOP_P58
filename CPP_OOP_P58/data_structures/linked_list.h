@@ -85,13 +85,27 @@ T LinkedList<T>::remove(size_t index) {
 			ListNode<T>* node = last;
 			T data = node->data;
 			last = last->prev;
-			last->next = NULL;
+			if (last) {
+				last->next = NULL;
+			}
 			delete node;
 			size -= 1;
+			if (size == 0){
+				first = NULL;
+			}
 			return data;
 		}
 		else {
-			return T(0);
+			ListNode<T>* node = first;
+			for (size_t i = 0;i < index; ++i) {
+				node = node->next;
+			}
+			node->prev->next = node->next;
+			node->next->prev = node->prev;
+			T data = node->data;
+			delete node;
+			size -= 1;
+			return data;
 		}	
 	}
 	else {
@@ -109,11 +123,14 @@ template<typename T>
 void LinkedList<T>::print() {
 	ListNode<T>* node = first;
 	if (node == NULL) {
-		std::cout << "Empty list" << std::endl;
+		std::cout << "Empty list, size = " << size << std::endl;
 	}
-	while (node) {
-		std::cout << node->data << " ";
-		node = node->next;
+	else {
+		std::cout << size << " element(s): ";
+		while (node) {
+			std::cout << node->data << " ";
+			node = node->next;
+		}
 	}
 	std::cout << std::endl;
 }
