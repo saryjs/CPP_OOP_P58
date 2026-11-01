@@ -63,7 +63,7 @@ void LinkedList<T>::insertBefore(T data,size_t index) {
 		}
 		else {
 			throw std::range_error(
-				std::format("Max index {} but got {}", size - 1, index)
+				std::format("LinkedList<T>::insertBefore: Max index {} but got {}", size - 1, index)
 			);
 		}
 	}
@@ -115,13 +115,9 @@ T LinkedList<T>::remove(size_t index) {
 		}	
 	}
 	else {
-		return T(0);
-		//if (first) {
-		//	std::cout << "Index out of range" << std::endl;
-		//}
-		//else {
-		//	std::cout << "Nothing to delete" << std::endl;
-		//}
+		throw std::range_error(
+			std::format("LinkedList<T>::remove: Unable to remove element. Max index {} but got {}", size - 1, index)
+		);
 	}
 }
 

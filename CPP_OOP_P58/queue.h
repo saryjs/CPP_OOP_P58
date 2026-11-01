@@ -1,4 +1,5 @@
 #pragma once
+#include <stdexcept>
 #include "data_structures/linked_list.h"
 template <typename T>
 class Queue {
@@ -13,11 +14,17 @@ public:
 			return queue->remove(0);
 		}
 		else {
-			return T(0);
+			throw std::length_error(
+				"Queue<T>::dequeue(): Dequeue requested for empty queue"
+			);
 		}
 	};
 	size_t getLength() {
 		return queue->getSize();
+	}
+
+	bool isEmpty() {
+		return getLength() == 0;
 	}
 
 	Queue() {

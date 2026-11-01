@@ -40,6 +40,25 @@ void data_structures() {
     catch (const std::range_error& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
+    try {
+        intList->remove(0);
+        intList->print();
+        intList->remove(8);
+        intList->print();
+    }
+    catch (const std::range_error& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    try { while (true) std::cout << queue.dequeue() << std::endl; }
+    catch (...) {}
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    while (!queue.isEmpty()) std::cout << queue.dequeue() << std::endl;
 }
 
 void data_structures3() {
@@ -51,6 +70,12 @@ void data_structures3() {
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
     std::cout << queue.dequeue() << std::endl;
+    try { while (true) std::cout << queue.dequeue() << std::endl; }
+    catch(...) {}
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+    std::cout << queue.dequeue() << std::endl;
+    while (!queue.isEmpty()) std::cout << queue.dequeue() << std::endl;
 }
 
 void data_structures_2() {
