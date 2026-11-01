@@ -32,7 +32,7 @@ void data_structures() {
     intList->add(30);
     intList->print();
     try {
-        intList->insertBefore(35, 1);
+        intList->insertBefore(5, 0);
         intList->print();
         intList->insertBefore(25, 8);
         intList->print();
