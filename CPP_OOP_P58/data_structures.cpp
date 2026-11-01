@@ -26,6 +26,23 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    LinkedList<int>* intList = new LinkedList<int>();
+    intList->add(10);
+    intList->add(20);
+    intList->add(30);
+    intList->print();
+    try {
+        intList->insertBefore(35, 1);
+        intList->print();
+        intList->insertBefore(25, 8);
+        intList->print();
+    }
+    catch (const std::range_error& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
+}
+
+void data_structures3() {
     std::cout << "Queue demo" << std::endl;
     Queue<int> queue;
     queue.enqueue(1);

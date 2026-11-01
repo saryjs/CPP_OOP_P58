@@ -1,5 +1,9 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
+#include <format>
+
+
 template<typename T>
 struct ListNode {
 	T data;
@@ -58,7 +62,9 @@ void LinkedList<T>::insertBefore(T data,size_t index) {
 			node->next->next->prev = node->next;
 		}
 		else {
-			std::cout << "Index out of range" << std::endl;
+			throw std::range_error(
+				std::format("Max index {} but got {}", size - 1, index)
+			);
 		}
 	}
 }
