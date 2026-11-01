@@ -27,8 +27,8 @@ public:
 		// TODO
 	}
 	Queue(Queue<T>&& other) noexcept{ // move
-		this->queue = other->queue;
-		other->queue = NULL;
+		this->queue = other.queue;
+		other.queue = NULL;
 	}
 	~Queue() {
 		if (queue) delete queue;
