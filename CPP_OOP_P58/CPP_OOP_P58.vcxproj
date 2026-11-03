@@ -139,6 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="array.cpp" />
     <ClCompile Include="basics.cpp" />
     <ClCompile Include="CPP_OOP_P58.cpp" />
     <ClCompile Include="data_structures.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="array.h" />
     <ClInclude Include="basics.h" />
     <ClInclude Include="data_structures.h" />
     <ClInclude Include="data_structures\linked_list.h" />
