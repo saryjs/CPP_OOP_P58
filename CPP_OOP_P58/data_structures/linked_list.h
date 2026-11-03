@@ -25,6 +25,10 @@ public:
 
 	void print();
 	void printId();
+
+	LinkedList<T>& operator =(const LinkedList<T>& other);
+	LinkedList<T>  operator +(const LinkedList<T>& other) const;
+	LinkedList<T>  operator *(const LinkedList<T>& other) const;
 };
 
 //#include "linked_list.cpp"
@@ -146,6 +150,54 @@ void LinkedList<T>::printId() {
 		num += 1;
 	}
 	std::cout << std::endl;
+}
+
+template<typename T>
+LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T>& other) {
+	while (this->first != NULL) {
+		this->remove(0);
+	}
+	ListNode<T>* node = other.first;
+	while (node != NULL) {
+		this->add(node->data);
+		node = node->next;
+	}
+	return *this;
+}
+
+template<typename T>
+LinkedList<T> LinkedList<T>::operator +(const LinkedList<T>& other) const {
+	LinkedList<T> sum;
+	ListNode<T>* node = this->first;
+	while (node != NULL) {
+		sum.add(node->data);
+		node = node->next;
+	}
+	node = other.first;
+	while (node != NULL) {
+		sum.add(node->data);
+		node = node->next;
+	}
+	return sum;
+}
+
+template<typename T>
+LinkedList<T> LinkedList<T>::operator *(const LinkedList<T>& other) const {
+	LinkedList<T> share;
+	ListNode<T>* node_this = this->first;
+	
+	while (node_this) {
+
+		ListNode<T>* node_other = other.first;
+		while (node_other) {
+			if (node_this->data == node_other->data) {
+				share.add(node_this->data);
+			}
+			node_other = node_other->next;
+		}
+		node_this = node_this->next;
+	}
+	return share;
 }
 
 /*

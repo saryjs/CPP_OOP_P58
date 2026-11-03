@@ -26,6 +26,46 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    LinkedList<int>* int_list_1 = new LinkedList<int>();
+    int_list_1->add(5);
+    int_list_1->add(47);
+    int_list_1->add(23);
+    int_list_1->add(12);
+    int_list_1->add(60);
+    int_list_1->add(35);
+    std::cout << "INT LIST 1" << std::endl;
+    int_list_1->print();
+    LinkedList<int>* int_list_2 = new LinkedList<int>();
+    int_list_2->add(6);
+    int_list_2->add(12);
+    int_list_2->add(54);
+    int_list_2->add(98);
+    int_list_2->add(35);
+    int_list_2->add(68);
+    std::cout << "INT LIST 2" << std::endl;
+    int_list_2->print();
+
+    std::cout << "Copy operator" << std::endl;
+    int_list_1 = int_list_2;
+    int_list_1->print();
+
+    std::cout << "Plus operator" << std::endl;
+    LinkedList<int> int_list_both = *int_list_1 + *int_list_2;
+    int_list_both.print();
+
+    std::cout << "Share operator" << std::endl;
+    LinkedList<int>* int_list_share_1 = new LinkedList<int>();
+    int_list_share_1->add(5);
+    int_list_share_1->add(47);
+    int_list_share_1->add(23);
+    int_list_share_1->add(12);
+    int_list_share_1->add(60);
+    int_list_share_1->add(35);
+    LinkedList<int> int_list_share_both = *int_list_share_1 * *int_list_2;
+    int_list_share_both.print();
+}
+
+void data_structures4() {
     LinkedList<int>* intList = new LinkedList<int>();
     intList->add(10);
     intList->add(20);
