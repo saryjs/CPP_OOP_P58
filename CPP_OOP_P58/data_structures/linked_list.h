@@ -26,15 +26,41 @@ public:
 	void print();
 	void printId();
 
-	LinkedList<T>* clone();
+	LinkedList<T>* clone() const;
 
-	LinkedList<T>& operator =(const LinkedList<T>& other);
+	LinkedList() : first{ NULL }, last{ NULL }, size{ 0 } { 
+		// default constructor
+	}
+	LinkedList(const LinkedList<T>& other){ // copy
+		ListNode<T>* node = other.first;
+		while (node) {
+			this->add(node->data);
+			node = node->next;
+		}
+	}
+
+	LinkedList(LinkedList<T>&& other) noexcept : // move
+		first{ other.first }, last{ other.last }, size{ other.size } 
+	{
+		other.first = other.last = NULL;
+	}
+
+	LinkedList<T>& operator =(const LinkedList<T>& other);   // copy
+	LinkedList<T>& operator =(LinkedList<T>&& other);       // move
 	LinkedList<T>  operator +(const LinkedList<T>& other) const;
 	LinkedList<T>  operator *(const LinkedList<T>& other) const;
+
+	~LinkedList() {
+		while (first) {
+			last = first;
+			first = first->next;
+			delete last;
+		}
+	}
 };
 
 template<typename T>
-LinkedList<T>* LinkedList<T>::clone() {
+LinkedList<T>* LinkedList<T>::clone() const{
 	/*
 	Q1
 		*list1
@@ -176,15 +202,35 @@ void LinkedList<T>::printId() {
 
 template<typename T>
 LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T>& other) {
-	while (this->first != NULL) {
-		this->remove(0);
+	ListNode<T>* node = first;
+	while (node) {
+		first = first->next;
+		delete node;
+		node = first;
 	}
-	ListNode<T>* node = other.first;
-	while (node != NULL) {
+	first = last = NULL;
+	node = other.first;
+	while (node) {
 		this->add(node->data);
 		node = node->next;
 	}
-	return *this;
+}
+
+template<typename T>
+LinkedList<T>& LinkedList<T>::operator =(LinkedList<T>&& other) {
+	ListNode<T>* node = first;
+	while (node) {
+		first = first->next;
+		delete node;
+		node = first;
+	}
+	first = last = NULL;
+	node = other.first;
+	while (node) {
+		this->add(node->data);
+		node = node->next;
+	}
+	other.first = other.last = NULL;
 }
 
 template<typename T>
