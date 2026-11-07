@@ -26,10 +26,31 @@ public:
 	void print();
 	void printId();
 
+	LinkedList<T>* clone();
+
 	LinkedList<T>& operator =(const LinkedList<T>& other);
 	LinkedList<T>  operator +(const LinkedList<T>& other) const;
 	LinkedList<T>  operator *(const LinkedList<T>& other) const;
 };
+
+template<typename T>
+LinkedList<T>* LinkedList<T>::clone() {
+	/*
+	Q1
+		*list1
+		  *first1 --> [p|d|n] <--> [p|d|n]...[ ] <-- last1
+	clone(res)           |            |       |
+	      *first1 --> [p|d|n] <--> [p|d|n]...[ ] <-- last2
+	*/
+	LinkedList<T>* res = new LinkedList<T>;
+	ListNode<T>* node = this->first;
+	while (node) {
+		res->add(node->data);
+
+		node = node->next;
+	}
+	return res;
+}
 
 //#include "linked_list.cpp"
 template<typename T>
@@ -64,6 +85,7 @@ void LinkedList<T>::insertBefore(T data,size_t index) {
 			}                         //        / prev    /
 			node->next = new ListNode<T>{ data, node, node->next };
 			node->next->next->prev = node->next;
+			size += 1;
 		}
 		else {
 			throw std::range_error(

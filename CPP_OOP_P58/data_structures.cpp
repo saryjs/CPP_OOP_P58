@@ -26,6 +26,37 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    LinkedList<int>* intList = new LinkedList<int>();
+    intList->add(10);
+    intList->add(20);
+    intList->add(30);
+    intList->print();
+    LinkedList<int>* intList2 = intList->clone();
+    std::cout << "intList2: " << std::endl;
+    intList2->print();
+    intList->insertBefore(5, 0);
+    intList2->insertBefore(5, 2);
+    std::cout << "Added elements to both lists" << std::endl << "intList: " << std::endl;
+    intList->print();
+    std::cout << "intList2: " << std::endl;
+    intList2->print();
+    std::cout << "Copying empty list: " << std::endl;
+    LinkedList<int>* intListEmpty = new LinkedList<int>();
+    LinkedList<int>* intListEC = intListEmpty->clone();
+    intListEC->print();
+    std::cout << "<-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_->" << std::endl;
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    Queue<int> queue2 = std::move(queue);
+    while (!queue2.isEmpty()) {
+        std::cout << queue2.dequeue() << std::endl;
+    }
+}
+
+
+void data_structures5() {
     LinkedList<int>* int_list_1 = new LinkedList<int>();
     int_list_1->add(5);
     int_list_1->add(47);
