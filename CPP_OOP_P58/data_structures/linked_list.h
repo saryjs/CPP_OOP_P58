@@ -28,6 +28,16 @@ public:
 
 	LinkedList<T>* clone() const;
 
+	void clear() {
+		ListNode<T>* node = this->first;
+		while (node) {
+			first = first->next;
+			delete node;
+			node = first;
+		}
+		first = last = NULL;
+	}
+
 	LinkedList() : first{ NULL }, last{ NULL }, size{ 0 } { 
 		// default constructor
 	}
@@ -38,7 +48,6 @@ public:
 			node = node->next;
 		}
 	}
-
 	LinkedList(LinkedList<T>&& other) noexcept : // move
 		first{ other.first }, last{ other.last }, size{ other.size } 
 	{
@@ -202,14 +211,9 @@ void LinkedList<T>::printId() {
 
 template<typename T>
 LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T>& other) {
-	ListNode<T>* node = first;
-	while (node) {
-		first = first->next;
-		delete node;
-		node = first;
-	}
-	first = last = NULL;
-	node = other.first;
+	clear();
+
+	ListNode<T>* node = other.first;
 	while (node) {
 		this->add(node->data);
 		node = node->next;
@@ -218,19 +222,16 @@ LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T>& other) {
 
 template<typename T>
 LinkedList<T>& LinkedList<T>::operator =(LinkedList<T>&& other) {
-	ListNode<T>* node = first;
+	ListNode<T>* node = this->first;
 	while (node) {
 		first = first->next;
 		delete node;
 		node = first;
 	}
 	first = last = NULL;
-	node = other.first;
-	while (node) {
-		this->add(node->data);
-		node = node->next;
-	}
-	other.first = other.last = NULL;
+	this->first = other.first;
+	this->last = other.last;
+	this->size = other.size;
 }
 
 template<typename T>
