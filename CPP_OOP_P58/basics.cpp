@@ -1,51 +1,81 @@
 #include <iostream>
+#include <memory>
 #include "basics.h"
 
 void basics() {
+	std::cout << "OOP Basics" << std::endl;
+	//LinkedList<Product*> stock;
+	//LinkedList<Product*>* stock; // delete
+	//LinkedList<std::unique_ptr<Product>> stock;
+	std::unique_ptr<LinkedList<Product*>> stock;
+}
+
+void basics2() {
 	std::cout << "OOP Basics" << std::endl;
 	// Поліморфізм - поєднання до єдиного масиву (колекції)
 	// об'єктів різного типу. Формально, об'єкти мають один
 	// тип (базового класу), при цьому фактично є об'єктами
 	// похідних (дочірніх) типів
 
-	//Product* stock[2];
+	Product* stock[2];
 
-	//stock[0] = (new Laptop())
-	//	->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
-	//	->setPower(90)
-	//	->setName("Acer Nitro")
-	//	->setPrice(60499);
+	stock[0] = (new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499);
 
-	//stock[1] = (new Monitor())
-	//	->setDiagonal(32)
-	//	->setPower(120)
-	//	->setName("Dell Vision")
-	//	->setPrice(7950);
+	stock[1] = (new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950);
 
-	//for (auto product : stock) {
-	//	std::cout << product->toString() << std::endl;
-	//}
+	std::unique_ptr<Product> ptr = std::make_unique<Laptop>( (new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499)
+	);
 
-	Site* available[2];
+	 //std::unique_ptr<Product> ptr2 = ptr; - помилка, не можна зробити другий
+	//                                         покажчик на один об'єкт
 
-	available[0] = (new Flat())
-		->setRoom(123)
-		->setSquare(456)
-		->setLocation("City")
-		->setPrice(789)
-		->setName("Flat1");
+	std::unique_ptr<Product> ptr2 = std::move(ptr);
 
-	available[1] = (new Car())
-		->setGas("Diesel")
-		->setGear("Manual")
-		->setYear(2026)
-		->setPrice(123123)
-		->setName("Car1");
+	std::shared_ptr<Product> s1 = std::make_shared<Monitor>((new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950)
+	);
 
-	for (auto site : available) {
-		std::cout << site->toString() << std::endl;
+	std::shared_ptr<Product> s2 = s1;
+
+	for (auto product : stock) {
+		std::cout << product->toString() << std::endl;
 	}
-}
+
+//	Site* available[2];
+//
+//	available[0] = (new Flat())
+//		->setRoom(123)
+//		->setSquare(456)
+//		->setLocation("City")
+//		->setPrice(789)
+//		->setName("Flat1");
+//
+//	available[1] = (new Car())
+//		->setGas("Diesel")
+//		->setGear("Manual")
+//		->setYear(2026)
+//		->setPrice(123123)
+//		->setName("Car1");
+//
+//	for (auto site : available) {
+//		std::cout << site->toString() << std::endl;
+//	}
+//}
 
 /*
 Основні принципи ООП.
@@ -119,4 +149,25 @@ Electrical* stock = new Laptop()
   stock->nv() -- Electrical::nv
 Невіртуальні методи створюються за замовчанням,
 для створення віртуальних необхідно додати оператор "virtual"
+*/
+
+/*
+"Розумні Покажчики" (Smart Pointers) - спеціальні конструкції, які
+дозволяють автоматично контралювати знищення об'єктів. Їх можна розуміти
+як "оболонки" над об'єктами, які не змінюють правила роботи з ними, але
+додають спостереження за їх використанням: 
+	якщо об'єкт перестає використовуватись,
+	він знищується.
+
+unique_ptr - унікальний покажчик, мається на увазі, що неможна створити
+другий покажчик на вже створений об'єкт. Якщо потрібно перенести посилання,
+то слід скористатись std::move. Створюється командою std::make_unique
+shared_ptr - розподілений покажчик, дозволяє створювати кілька посилань
+на один об'єкт. Створюється командою std::make_shared
+
+Ідея роботи в тому, що розумні покажчики насправді не є покажчиками, а є
+звичайними змінними, що в середині зберігають покажчик. Змінні, що
+виходят з області видності, видаляються автоматично, тоді як
+виділена пам'ять (для покажчиків) закріплюється за всією програмою і не
+керується при виході змінних з областей видності.
 */
