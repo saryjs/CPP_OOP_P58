@@ -72,6 +72,9 @@
     <ClCompile Include="data_structures\linked_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h">
@@ -126,6 +129,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="data_structures\linked_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures\stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures\stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

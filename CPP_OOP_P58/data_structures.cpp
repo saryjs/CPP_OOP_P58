@@ -1,6 +1,7 @@
 #include "data_structures.h"
 #include "queue.h"
 #include "data_structures/linked_list.h"
+#include "data_structures/stack.h"
 #include <iostream>
 
 template <typename T>               //  Шаблонними можуть бути функціхх та типи (класи, структури)       
@@ -26,6 +27,24 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    Stack<int>* stack = new Stack<int>();
+    stack->push(10);
+    stack->push(20);
+    stack->push(30);
+    stack->push(40);
+    stack->print();
+    std::cout << "Popped: " << stack->pop() << std::endl;
+    std::cout << "Popped: " << stack->pop() << std::endl;
+    std::cout << "Popped: " << stack->pop() << std::endl;
+    std::cout << "Popped: " << stack->pop() << std::endl;
+    stack->push(27);
+    stack->push(37);
+    std::cout << "Top: " << stack->last() << std::endl;
+    std::cout << "Popped: " << stack->pop() << std::endl;
+    std::cout << "Top: " << stack->last() << std::endl;
+}
+
+void data_structures6() {
     LinkedList<int>* intList = new LinkedList<int>();
     intList->add(10);
     intList->add(20);
