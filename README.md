@@ -7,5 +7,5 @@
 # Basics
 <img width="673" height="402" alt="Screenshot 2026-10-25 093043" src="https://github.com/user-attachments/assets/dc01b9c4-c059-4b5e-9013-65cf720abeff" />
 
-#Exceptions
+# Exceptions
 <img width="860" height="331" alt="exc1" src="https://github.com/user-attachments/assets/90654caf-1ba2-4a0b-b068-7516d24f1cb0" />
