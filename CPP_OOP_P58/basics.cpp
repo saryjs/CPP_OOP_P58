@@ -4,12 +4,44 @@
 
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
-	//LinkedList<Product*> stock;
-	//LinkedList<Product*>* stock = new LinkedList<Product*>(); // delete
-	//LinkedList<std::unique_ptr<Product>> stock;
-	std::unique_ptr<LinkedList<Product*>> stock;
-}
+	//LinkedList<Product*> stock;                   // Перелік покажчиків (stock - статичний об'єкт LinkedList, який вже є)
+		// + автоматично знищиться після завершення ф-ції basics() 
+		// - весь об'єкт stock розміщується у стеку
 
+		// LinkedList<Product*>* stock;					 // Покажчик на перелік покажчиків (stock - покажчик на об'єкт LinkedList, якого ще немає)
+		// + економія стекової пам'яті, у стеку тільки адреса
+		// - необхідно створити об'єкт: stock = new LinkedList<Product*>();
+		//   та не забути видалити (delete stock), оскільки автоматично звільниться 
+		//   тільки адреса, а не об'єкт за нею
+
+		// LinkedList<std::unique_ptr<Product>> stock;	 // Перелік розумних покажчиків
+	
+
+	//std::unique_ptr<LinkedList<Product*>> stock = 	    // Розумний покажчик на перелік
+		//std::make_unique<LinkedList<Product*>>();
+	// оптимальний варіант - покажчик в середині розумного покажчика та
+	// автоматичне видалення після роботи
+	      
+	LinkedList<Product*>* stock = new LinkedList<Product*>();
+
+	stock->add((new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499)
+	);   
+	stock->add((new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950)
+	);  
+	
+	stock->print();
+
+	delete stock;
+}
+/*
 void basics2() {
 	std::cout << "OOP Basics" << std::endl;
 	// Поліморфізм - поєднання до єдиного масиву (колекції)
@@ -75,8 +107,8 @@ void basics2() {
 //	for (auto site : available) {
 //		std::cout << site->toString() << std::endl;
 //	}
-//}
-
+}
+*/
 /*
 Основні принципи ООП.
 Абстрагування, спадкування, поліморфізм, інкапсуляція.
