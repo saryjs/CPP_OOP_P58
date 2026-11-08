@@ -18,7 +18,7 @@ void basics() {
 	
 
 	//std::unique_ptr<LinkedList<Product*>> stock = 	    // Розумний покажчик на перелік
-		//std::make_unique<LinkedList<Product*>>();
+		//std::make_unique<LinkedList<Product*>>();  // thisisithiithisihrihsithitsdhi
 	// оптимальний варіант - покажчик в середині розумного покажчика та
 	// автоматичне видалення після роботи
 	      
