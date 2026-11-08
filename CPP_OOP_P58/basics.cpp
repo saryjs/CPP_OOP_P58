@@ -5,7 +5,7 @@
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
 	//LinkedList<Product*> stock;
-	//LinkedList<Product*>* stock; // delete
+	//LinkedList<Product*>* stock = new LinkedList<Product*>(); // delete
 	//LinkedList<std::unique_ptr<Product>> stock;
 	std::unique_ptr<LinkedList<Product*>> stock;
 }
