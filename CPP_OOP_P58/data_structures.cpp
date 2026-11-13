@@ -3,6 +3,7 @@
 #include "data_structures/linked_list.h"
 #include "data_structures/stack.h"
 #include <iostream>
+#include <string>
 
 template <typename T>               //  Шаблонними можуть бути функціхх та типи (класи, структури)       
 void print(T arg) {                 //  Шаблон вводить "змінну" для типу, традиційно "Т"          
@@ -27,6 +28,16 @@ struct fraction {       // Для типів (наприклад структу�
 }; 
 
 void data_structures() {
+    Stack<std::string>* stack = new Stack<std::string>();
+
+    std::cout << "Enter line: ";
+    std::string line;
+    std::getline(std::cin, line);
+
+    stack->checkLine(line);
+}
+
+void data_structures7() {
     Stack<int>* stack = new Stack<int>();
     stack->push(10);
     stack->push(20);

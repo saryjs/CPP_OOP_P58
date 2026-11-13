@@ -2,6 +2,16 @@
 #include <iostream>
 #include <stdexcept>
 #include <format>
+#include <string>
+
+const char roundL = 40; // (
+const char roundR = 41; // )
+const char squareL = 91; // [
+const char squareR = 93; // ]
+const char curlyL = 123; // {
+const char curlyR = 125; // }
+
+const char endLine = 59; // ;
 
 template<typename T>
 struct StackNode {
@@ -15,6 +25,13 @@ private:
 	StackNode<T>* lastNode = NULL;
 	size_t size = 0;
 public:
+	bool isEmpty() {
+		if (lastNode == NULL) {
+			return true;
+		}
+		return false;
+	}
+
 	void empty() {
 		while (size != 0) {
 			pop();
@@ -22,7 +39,7 @@ public:
 	}
 
 	void print() {
-		if (size = 0) {
+		if (size == 0) {
 			std::cout << "Stack is empty" << std::endl;
 			return;
 		}
@@ -39,7 +56,7 @@ public:
 		size += 1;
 	}
 	T pop() {
-		if (size = 0) {
+		if (size == 0) {
 			throw std::range_error("Stack->pop() : Stack is empty");
 		}
 		StackNode<T>* node = lastNode;
@@ -51,12 +68,49 @@ public:
 		return data;
 	}
 	T last() {
-		if (size = 0) {
+		if (size == 0) {
 			throw std::range_error("Stack->last() : Stack is empty");
 		}
 
 		T data = lastNode->data;
 		return data;
+	}
+
+	void checkLine(std::string& line) {
+		Stack<char> bracket;
+		size_t length = strlen(line.c_str());
+		for (size_t i = 0; i < length; i++) {
+			if (line[i] == roundL or
+				line[i] == squareL or
+				line[i] == curlyL ) {
+				bracket.push(line[i]);
+			}
+			if (line[i] == roundR or
+				line[i] == squareR or
+				line[i] == curlyR ) {
+				if (bracket.isEmpty()) {
+					std::cout << "Stack is empty";
+					return;
+				}
+				else {
+					char last = bracket.pop();
+					if (last == roundL and line[i] == roundR) {}
+					else if (last == squareL and line[i] == squareR) {}
+					else if (last == curlyL and line[i] == curlyR) {}
+					else {
+						std::cout << std::format("First error happened at char {}", i);
+						return;
+					}
+				}
+			}
+		}
+		if (bracket.isEmpty()) {
+			std::cout << "Valid";
+		}
+		else {
+			std::cout << "Bracket not closed";
+		}
+		return;
 	}
 
 	Stack(){}//?
