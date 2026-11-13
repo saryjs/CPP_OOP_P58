@@ -9,3 +9,6 @@
 
 # Exceptions
 <img width="860" height="331" alt="exc1" src="https://github.com/user-attachments/assets/90654caf-1ba2-4a0b-b068-7516d24f1cb0" />
+
+# Stack line check
+<img width="1142" height="614" alt="Screenshot 2026-11-13 182619" src="https://github.com/user-attachments/assets/575c7ac0-4887-4dbe-9b9d-4227a8898336" />
