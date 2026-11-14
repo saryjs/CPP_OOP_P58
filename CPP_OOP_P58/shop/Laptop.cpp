@@ -18,3 +18,13 @@ std::string Laptop::toString() const {
 		getPower()
 	);
 }
+
+std::ostream& operator <<(std::ostream& out, const Laptop& obj) {
+	out << obj.toString();
+	return out;
+}
+
+std::ostream& operator <<(std::ostream& out, const Laptop* obj) {
+	out << *obj; // розіменування покажчика (Dereferencing)
+	return out;
+}

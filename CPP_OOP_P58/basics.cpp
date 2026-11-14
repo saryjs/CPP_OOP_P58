@@ -30,6 +30,9 @@ void basics() {
 		->setName("Acer Nitro")
 		->setPrice(60499)
 	);   
+
+	std::cout << stock[0];
+
 	stock->add((new Monitor())
 		->setDiagonal(32)
 		->setPower(120)
@@ -39,7 +42,7 @@ void basics() {
 	
 	stock->print();
 
-	delete stock;
+	//delete stock;
 }
 /*
 void basics2() {

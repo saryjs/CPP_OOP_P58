@@ -59,6 +59,8 @@ public:
 	LinkedList<T>  operator +(const LinkedList<T>& other) const;
 	LinkedList<T>  operator *(const LinkedList<T>& other) const;
 
+	
+
 	~LinkedList() {
 		while (first) {
 			last = first;
