@@ -1,13 +1,15 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include <string>
+#include <cstring>
 #include <format>
 #include <iostream>
 
 template<typename T>
 class vector2_t {
 private:
-	T x;
-	T y;
+	T x = 0;
+	T y = 0;
 	char* name;
 public:
 	T get_x() {
@@ -16,19 +18,32 @@ public:
 	T get_y() {
 		return y;
 	};
-	void set_x(T x) {
+	vector2_t* set_x(T x) {
 		this->x = x;
+		return this;
 	};
-	void set_y(T y) {
+	vector2_t* set_y(T y) {
 		this->y = y;
+		return this;
 	};
 
 	char* get_name() {
 		return name;
 	};
-	void set_name(char* name) {
-		this->name = name;
+	vector2_t* set_name(const char* name_) {
+		if (!name) {
+			delete[] name;
+			name = NULL;
+		}
+		if (name_) {
+			size_t len = strlen(name_) + 1;
+			name = new char[len];
+			strcpy(name, name_);
+		}
+		return this;
 	};
+
+	
 
 	std::string to_string() {
 		return std::format("({};{})", x, y);
@@ -166,40 +181,53 @@ public:
 			ret_name);
 	};
 
+	friend std::ostream& operator <<(std::ostream& out, const vector2_t* f) {
+		if (f) {
+			out << *f;
+		}
+		return out;
+	};
 	friend std::ostream& operator <<(std::ostream& out, const vector2_t& f) {
 		out << f.x << " ; " << f.y;
 		return out;
-	};
+	}
 };
-
-template<typename T>
-std::ostream& operator <<(std::ostream& out, const vector2_t<T>& f) {
-	out << f.x << " ; " << f.y;// << "(" << f.name << ")";
-	return out;
-};
-
-template<typename T>
-vector2_t<T> operator -(vector2_t<T>& f) {
-	return vector2_t<T>(
-		-f.get_x(),
-		f.get_y()
-	);
-};
-
-template<typename T>
-vector2_t<T> operator *(const vector2_t<T>& f1, const vector2_t<T>& f2) {
-	char* ret_name = f1.name;
-	return vector2_t<T>(
-		f1.x * f2.x,
-		f1.y * f2.y,
-		ret_name);
-};
-template<typename T>
-vector2_t<T> operator /(const vector2_t<T>& f1, const vector2_t<T>& f2) {
-	char* ret_name = f1.name;
-	return vector2_t<T>(
-		f1.x / f2.x,
-		f1.y / f2.y,
-		ret_name);
-};
-
+//
+//template<typename T>
+//std::ostream& operator <<(std::ostream& out, const vector2_t<T>& f) {
+//	out << f->x << " ; " << f->y;// << "(" << f.name << ")";
+//	return out;
+//};
+//template<typename T>
+//std::ostream& operator <<(std::ostream& out, const vector2_t<T>* f) {
+//	if (f) {
+//		out << *f;
+//	}
+//	return out;
+//};
+//
+//template<typename T>
+//vector2_t<T> operator -(vector2_t<T>& f) {
+//	return vector2_t<T>(
+//		-f.get_x(),
+//		f.get_y()
+//	);
+//};
+//
+//template<typename T>
+//vector2_t<T> operator *(const vector2_t<T>& f1, const vector2_t<T>& f2) {
+//	char* ret_name = f1.name;
+//	return vector2_t<T>(
+//		f1.x * f2.x,
+//		f1.y * f2.y,
+//		ret_name);
+//};
+//template<typename T>
+//vector2_t<T> operator /(const vector2_t<T>& f1, const vector2_t<T>& f2) {
+//	char* ret_name = f1.name;
+//	return vector2_t<T>(
+//		f1.x / f2.x,
+//		f1.y / f2.y,
+//		ret_name);
+//};
+//

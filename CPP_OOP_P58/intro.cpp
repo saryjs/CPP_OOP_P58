@@ -1,11 +1,49 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "intro.h"
+#include "basics.h"
 #include "fraction.h"
 #include "vector.h"
 #include <iostream>
 
 void intro() {
 	//// запуск демонстрації
-	//std::cout << "Intro to OOP" << std::endl;
+	std::cout << "Intro to OOP" << std::endl;
+
+	LinkedList<vector2_t<int>*> vectors;
+
+	vectors.add((new vector2_t<int>())
+		->set_x(2)
+		->set_y(2)
+		->set_name("vector 1")
+	);
+
+	vectors.add((new vector2_t<int>())
+		->set_x(1)
+		->set_y(3)
+		->set_name("vector 2")
+	);
+	vectors.add((new vector2_t<int>())
+		->set_x(28)
+		->set_y(63)
+		->set_name("vector 3")
+	);
+
+	int N = 3;
+	for (int i = 0; i < N; ++i) {
+		std::cout << vectors[i] << std::endl;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	//// створення об'єктів
 	//fraction_t frac1;   // статичне оголошення - об'єкт у стеку
 	//fraction_t* frac2 = new fraction_t;  // динамічне оголошення - об'єкт у "купі"
@@ -96,12 +134,12 @@ void intro() {
 	//	<< "Copied vector: " << vect4->to_string() << std::endl
 	//	<< "Copied copied vector: " << vect5->to_string() << std::endl;
 
-	vector2_t<int> vec1(5, 3, new char[] {"Int1"});
-	std::cout << "VECTOR 1: " << vec1.to_string() << std::endl;
-	vector2_t<float> vec2(4, 7, new char[] {"Float1"});
-	std::cout << "VECTOR 2: " << vec2.to_string() << std::endl;
-	vector2_t<double> vec3(8, 12, new char[] {"Double1"});
-	std::cout << "VECTOR 3: " << vec3.to_string() << std::endl;
+	//vector2_t<int> vec1(5, 3, new char[] {"Int1"});
+	//std::cout << "VECTOR 1: " << vec1.to_string() << std::endl;
+	//vector2_t<float> vec2(4, 7, new char[] {"Float1"});
+	//std::cout << "VECTOR 2: " << vec2.to_string() << std::endl;
+	//vector2_t<double> vec3(8, 12, new char[] {"Double1"});
+	//std::cout << "VECTOR 3: " << vec3.to_string() << std::endl;
 
 	//delete vect2;
 	//delete vect4;

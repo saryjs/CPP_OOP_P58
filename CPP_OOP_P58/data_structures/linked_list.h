@@ -18,7 +18,7 @@ private:
 	ListNode<T>* last = NULL;
 	size_t size = 0;
 public:
-	void add(T data);
+	T add(T data);
 	void insertBefore(T data, size_t index);
 	T remove(size_t index);
 	size_t getSize() const { return size; }
@@ -101,9 +101,8 @@ LinkedList<T>* LinkedList<T>::clone() const{
 	return res;
 }
 
-//#include "linked_list.cpp"
 template<typename T>
-void LinkedList<T>::add(T data) {
+T LinkedList<T>::add(T data) {
 	if (last) {
 		//                                     /попередній = node
 		last->next = new ListNode<T> { data, last, NULL };
@@ -113,6 +112,7 @@ void LinkedList<T>::add(T data) {
 		first = last = new ListNode<T> { data, NULL, NULL };
 	}
 	size += 1;
+	return data;
 }
 
 template<typename T>
