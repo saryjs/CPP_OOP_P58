@@ -59,7 +59,19 @@ public:
 	LinkedList<T>  operator +(const LinkedList<T>& other) const;
 	LinkedList<T>  operator *(const LinkedList<T>& other) const;
 
-	
+	T& operator[](size_t index) { // indexer
+		ListNode<T>* node = this->first;
+		while (node && index > 0) {
+			node = node->next;
+			index--;
+		}
+		if (!node) {
+			throw std::range_error(
+				std::format("LinkedList<T>::operator[]: Unable to find element. Max index {} but got {}", size - 1, index)
+			);
+		}
+		return node->data;
+	}
 
 	~LinkedList() {
 		while (first) {

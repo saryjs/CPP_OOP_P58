@@ -1,5 +1,6 @@
 #pragma once
 #include "Electrical.h"
+#include <iostream>
 
 class Laptop : public Electrical {
 private:
@@ -13,4 +14,7 @@ public:
 	Laptop(const Laptop& other) : hardware{other.hardware} {}
 	Laptop(Laptop&& other) noexcept : hardware{ other.hardware } {}
 	~Laptop() {}
+
+	//std::ostream& operator <<(std::ostream& out, const Laptop& obj);
+	//std::ostream& operator <<(std::ostream& out, const Laptop* obj);
 };

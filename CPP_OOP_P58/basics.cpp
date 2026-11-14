@@ -22,25 +22,28 @@ void basics() {
 	// оптимальний варіант - покажчик в середині розумного покажчика та
 	// автоматичне видалення після роботи
 	      
-	LinkedList<Product*>* stock = new LinkedList<Product*>();
+	LinkedList<Product*> stock;// = new LinkedList<Product*>();
 
-	stock->add((new Laptop())
+	stock.add((new Laptop())
 		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
 		->setPower(90)
 		->setName("Acer Nitro")
 		->setPrice(60499)
 	);   
 
-	std::cout << stock[0];
-
-	stock->add((new Monitor())
+	stock.add((new Monitor())
 		->setDiagonal(32)
 		->setPower(120)
 		->setName("Dell Vision")
 		->setPrice(7950)
 	);  
+
+	int N = 2;
+	for (int i = 0; i < N; ++i) {
+		std::cout << stock[i] << std::endl;
+	}
 	
-	stock->print();
+	//stock.print();
 
 	//delete stock;
 }

@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "Product.h"
 
 std::string Product::getName() const {
@@ -18,3 +19,13 @@ Product* Product::setPrice(double price) {
 	this->price = price;
 	return this;
 }
+
+std::ostream& operator <<(std::ostream& out, const Product* obj) {
+	out << obj->toString();
+	return out;
+}
+
+//std::ostream& operator <<(std::ostream& out, const Product* obj) {
+//	out << *obj; // розіменування покажчика (Dereferencing)
+//	return out;
+//}

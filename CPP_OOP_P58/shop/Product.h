@@ -18,3 +18,5 @@ public:
 
 	virtual std::string toString() const = 0;  // pure virtual OR abstract method
 };
+
+std::ostream& operator <<(std::ostream& out, const Product* obj);
