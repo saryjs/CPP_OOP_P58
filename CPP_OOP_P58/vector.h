@@ -43,7 +43,19 @@ public:
 		return this;
 	};
 
-	
+	T& operator[](size_t index) { // indexer
+		if (index == 0) {
+			return x;
+		}
+		else if (index == 1) {
+			return y;
+		}
+		else {
+			throw std::range_error(
+				"vector2_t<T>::operator[]: Index neither 0 or 1"
+			);
+		}
+	}
 
 	std::string to_string() {
 		return std::format("({};{})", x, y);

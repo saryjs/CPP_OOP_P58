@@ -33,6 +33,17 @@ void intro() {
 		std::cout << vectors[i] << std::endl;
 	}
 
+	vector2_t<int> vec1(7, 3);
+	std::cout << "Vec1: " << vec1 << std::endl;
+
+	std::cout << "Vec1[0]: " << vec1[0] << std::endl;
+	std::cout << "Vec1[1]: " << vec1[1] << std::endl;
+
+	vec1[0] = 77;
+	vec1[1] = 33;
+
+	std::cout << "Vec1[0]: " << vec1[0] << std::endl;
+	std::cout << "Vec1[1]: " << vec1[1] << std::endl;
 
 
 
