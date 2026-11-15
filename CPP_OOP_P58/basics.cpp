@@ -27,6 +27,8 @@ void basics() {
 
 	int N = 0;
 
+
+	#pragma region Laptops
 	stock.add((new Laptop())
 		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
 		->setPower(90)
@@ -34,13 +36,53 @@ void basics() {
 		->setPrice(60499)
 	);   
 	N++;
+	#pragma endregion Laptops
+
+	#pragma region Monitors
+
+	//stock.add((new Monitor())
+	//	->setDiagonal(32)
+	//	->setPower(120)
+	//	->setName("Dell Vision")
+	//	->setPrice(7950)
+	//); 
+	//N++;
+
 	stock.add((new Monitor())
-		->setDiagonal(32)
-		->setPower(120)
-		->setName("Dell Vision")
-		->setPrice(7950)
+		->setDiagonal(27)
+		->setPower(35)
+		->setName("Xiaomi G Pro 27Qi")
+		->setPrice(15034)
 	); 
 	N++;
+
+	stock.add((new Monitor())
+		->setDiagonal(27)
+		->setPower(37)
+		->setName("ASUS TUF Gaming VG27AQ5A")
+		->setPrice(10463)
+	); 
+	N++;
+
+	stock.add((new Monitor())
+		->setDiagonal(34)
+		->setPower(40)
+		->setName("MSI MAG 341CQP QD-OLED")
+		->setPrice(46099)
+	); 
+	N++;
+
+	stock.add((new Monitor())
+		->setDiagonal(27)
+		->setPower(38)
+		->setName("GIGABYTE MO27Q28GR")
+		->setPrice(33899)
+	); 
+	N++;
+
+	#pragma endregion Monitors
+
+	#pragma region Mouses
 	stock.add((new Mouse())
 		->setDpi(1200)
 		->setConnection("USB")
@@ -55,6 +97,9 @@ void basics() {
 		->setPrice(67890)
 	);  
 	N++;
+	#pragma endregion Mouses
+
+	#pragma region Keyboards
 	stock.add((new Keyboard())
 		->setType("Mechanical")
 		->setConnection("USB")
@@ -62,6 +107,7 @@ void basics() {
 		->setPrice(54321)
 	);  
 	N++;
+	#pragma endregion Keyboards
 
 	//std::cout << "Stock has " << N << " products. Select an action:" << std::endl
 	//	<< "1. Show all" << std::endl
@@ -75,11 +121,14 @@ void basics() {
 	//if (choice == 0 || choice == 224) choice = _getch();
 	std::string line;
 	do {
-		std::cout << std::endl << std::endl << "Stock has " << N << " products. Select an action:" << std::endl
+		std::cout << std::endl << std::endl
+			<< " -== Product Menu ==-" << std::endl
+			<< "Stock has " << N << " products. Select an action:" << std::endl
 			<< "1. Show all" << std::endl
 			<< "2. Find by name" << std::endl
 			<< "3. Find by price" << std::endl
-			<< "4. Sort by price (asc)" << std::endl
+			<< "4. Sort by ascending price" << std::endl
+			<< "5. Sort by descending price" << std::endl
 			<< "0. Exit" << std::endl;
 		choice = _getch();
 		switch (choice) {
@@ -95,7 +144,7 @@ void basics() {
 			std::getline(std::cin, line);
 			//int counter = 0;
 			std::cout << std::endl;
-
+			// geeksforgeeks code
 			for (auto& ch : line) {
 				ch = tolower(ch);
 			}
@@ -110,19 +159,31 @@ void basics() {
 					counter++;
 				}
 			}
-			if (counter == 0) {
+			if (counter > 0) {
+				std::cout << "Found " << counter << " product(s)" << std::endl;
+			}
+			else if (counter == 0) {
 				std::cout << "Couldn't find a product by that name" << std::endl;
 			}
 			break;
 		case '3':
-			std::cout << std::endl << "Enter min price: ";
-			double minPrice;
+			double currentMax, currentMin, maxPrice, minPrice;
+			currentMax = currentMin = stock[0]->getPrice();
+			for (int i = 0; i < N; ++i) {
+				double p = stock[i]->getPrice();
+				if (currentMax <= p) { currentMax = p; }
+				if (currentMin >= p) { currentMin = p; }
+			}
+
+			std::cout << std::endl << "Enter min price(> " << currentMin << " ): ";
 			std::cin >> minPrice;
-			std::cout << std::endl << "Enter max price: ";
-			double maxPrice;
+			std::cout << std::endl << "Enter max price(< " << currentMax << " ):";
 			std::cin >> maxPrice;
 
-			if (minPrice > maxPrice) { std::swap(minPrice, maxPrice); }
+			if (minPrice > maxPrice) { 
+				std::cout << "Range set incorrectly, maybe you meant " << maxPrice << "-" << minPrice << std::endl;
+				std::swap(minPrice, maxPrice); 
+			}
 
 			std::cout << std::endl;
 			for (int i = 0; i < N; ++i) {
@@ -132,8 +193,42 @@ void basics() {
 					counter++;
 				}
 			}
-			if (counter == 0) {
+			if (counter > 0) {
+				std::cout << "Found " << counter << " product(s)" << std::endl;
+			}
+			else if (counter == 0) {
 				std::cout << "Couldn't find a product in that price range" << std::endl;
+			}
+			break;
+		case '4':
+			bool swap;
+			do {
+				swap = false;
+				for (int i = 0; i < N-1;++i) {
+					if (stock[i]->getPrice() >= stock[i + 1]->getPrice()) {
+						std::swap(stock[i], stock[i + 1]);
+						swap = true;
+					}
+				}
+			} while (swap);
+			for (int i = 0; i < N; ++i) {
+				Product* p = stock[i];
+				std::cout << p << std::endl;
+			}
+			break;
+		case '5':
+			do {
+				swap = false;
+				for (int i = 0; i < N-1;++i) {
+					if (stock[i]->getPrice() <= stock[i + 1]->getPrice()) {
+						std::swap(stock[i], stock[i + 1]);
+						swap = true;
+					}
+				}
+			} while (swap);
+			for (int i = 0; i < N; ++i) {
+				Product* p = stock[i];
+				std::cout << p << std::endl;
 			}
 			break;
 		case '0': break;
