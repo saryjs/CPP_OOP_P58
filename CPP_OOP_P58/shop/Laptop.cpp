@@ -8,7 +8,7 @@ std::string Laptop::getHardware() const {
 
 Laptop* Laptop::setHardware(std::string hardware) {
 	this->hardware = hardware;
-	return this;  // "fluent interface" - каскадне встановлення властивостей
+	return this;
 }
 
 std::string Laptop::toString() const {

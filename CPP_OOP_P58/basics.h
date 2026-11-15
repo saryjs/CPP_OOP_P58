@@ -1,5 +1,8 @@
 #pragma once
 
+#include "shop/Keyboard.h"
+#include "shop/Mouse.h"
+#include "shop/Periphery.h"
 #include "shop/Laptop.h"
 #include "shop/Monitor.h"
 #include "shop/Electrical.h"

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <conio.h>
 #include "basics.h"
 
 void basics() {
@@ -24,24 +25,123 @@ void basics() {
 	      
 	LinkedList<Product*> stock;// = new LinkedList<Product*>();
 
+	int N = 0;
+
 	stock.add((new Laptop())
 		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
 		->setPower(90)
 		->setName("Acer Nitro")
 		->setPrice(60499)
 	);   
-
+	N++;
 	stock.add((new Monitor())
 		->setDiagonal(32)
 		->setPower(120)
 		->setName("Dell Vision")
 		->setPrice(7950)
+	); 
+	N++;
+	stock.add((new Mouse())
+		->setDpi(1200)
+		->setConnection("USB")
+		->setName("Razor 1")
+		->setPrice(12345)
 	);  
+	N++;
+	stock.add((new Mouse())
+		->setDpi(1200)
+		->setConnection("USB")
+		->setName("Razor 2")
+		->setPrice(67890)
+	);  
+	N++;
+	stock.add((new Keyboard())
+		->setType("Mechanical")
+		->setConnection("USB")
+		->setName("Vinga")
+		->setPrice(54321)
+	);  
+	N++;
 
-	int N = 2;
-	for (int i = 0; i < N; ++i) {
-		std::cout << stock[i] << std::endl;
-	}
+	//std::cout << "Stock has " << N << " products. Select an action:" << std::endl
+	//	<< "1. Show all" << std::endl
+	//	<< "2. Find by name" << std::endl
+	//	<< "3. Find by price" << std::endl
+	//	<< "0. Exit" << std::endl;
+	int choice;
+	int counter = 0;
+	//choice = _getch();
+
+	//if (choice == 0 || choice == 224) choice = _getch();
+	std::string line;
+	do {
+		std::cout << std::endl << std::endl << "Stock has " << N << " products. Select an action:" << std::endl
+			<< "1. Show all" << std::endl
+			<< "2. Find by name" << std::endl
+			<< "3. Find by price" << std::endl
+			<< "4. Sort by price (asc)" << std::endl
+			<< "0. Exit" << std::endl;
+		choice = _getch();
+		switch (choice) {
+		case '1':
+			std::cout << std::endl;
+			for (int i = 0; i < N; ++i) {
+				Product* p = stock[i];
+				std::cout << p << std::endl;
+			}
+			break;
+		case '2':
+			std::cout << std::endl << "Search by name: ";
+			std::getline(std::cin, line);
+			//int counter = 0;
+			std::cout << std::endl;
+
+			for (auto& ch : line) {
+				ch = tolower(ch);
+			}
+
+			for (int i = 0; i < N; ++i) {
+				std::string p = stock[i]->getName();
+				for (auto& ch : p) {
+					ch = tolower(ch);
+				}
+				if (!p.find(line)) {
+					std::cout << stock[i]->getName() << " ( " << stock[i] << " )" << std::endl;
+					counter++;
+				}
+			}
+			if (counter == 0) {
+				std::cout << "Couldn't find a product by that name" << std::endl;
+			}
+			break;
+		case '3':
+			std::cout << std::endl << "Enter min price: ";
+			double minPrice;
+			std::cin >> minPrice;
+			std::cout << std::endl << "Enter max price: ";
+			double maxPrice;
+			std::cin >> maxPrice;
+
+			if (minPrice > maxPrice) { std::swap(minPrice, maxPrice); }
+
+			std::cout << std::endl;
+			for (int i = 0; i < N; ++i) {
+				double p = stock[i]->getPrice();
+				if (p >= minPrice && p <= maxPrice) {
+					std::cout << stock[i] << std::endl;
+					counter++;
+				}
+			}
+			if (counter == 0) {
+				std::cout << "Couldn't find a product in that price range" << std::endl;
+			}
+			break;
+		case '0': break;
+		default:
+			std::cout << "Wrong choice" << std::endl;
+			break;
+		}
+	} while (choice != '0');
 	
 	//stock.print();
 

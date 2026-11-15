@@ -146,8 +146,10 @@
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
     <ClCompile Include="shop\Electrical.cpp" />
+    <ClCompile Include="shop\Keyboard.cpp" />
     <ClCompile Include="shop\Laptop.cpp" />
     <ClCompile Include="shop\Monitor.cpp" />
+    <ClCompile Include="shop\Mouse.cpp" />
     <ClCompile Include="shop\Periphery.cpp" />
     <ClCompile Include="shop\Product.cpp" />
     <ClCompile Include="site\Auto.cpp" />
@@ -170,8 +172,10 @@
     <ClInclude Include="intro.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="shop\Electrical.h" />
+    <ClInclude Include="shop\Keyboard.h" />
     <ClInclude Include="shop\Laptop.h" />
     <ClInclude Include="shop\Monitor.h" />
+    <ClInclude Include="shop\Mouse.h" />
     <ClInclude Include="shop\Periphery.h" />
     <ClInclude Include="shop\Product.h" />
     <ClInclude Include="site\Auto.h" />
